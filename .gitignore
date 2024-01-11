@@ -1,0 +1,13 @@
+
+src/main/java/gazether/Global.java
+
+.classpath
+.project
+.settings/
+log/
+target/
+*.class
+bin/
+build/
+/bin1/
+java/build/**
