@@ -3,11 +3,58 @@ package gazether.Model;
 import java.math.BigDecimal;
 
 public class Gas {
-	public long LastBlock;
-	public int SafeGasPrice;
-	public int ProposeGasPrice;
-	public int FastGasPrice;
-	public BigDecimal SuggestBaseFee;
-	//gasUsedRatio = "0.370119078777807,0.8954731,0.550911766666667,0.212457033333333,0.552463633333333" 
-	// string?
+	public String status;
+	public String message;
+	public long lastBlock;
+	public String safeGasPrice;
+	public String proposeGasPrice;
+	public String fastGasPrice;
+	public BigDecimal suggestBaseFee;
+
+	public long getLastBlock() {
+		return lastBlock;
+	}
+	public void setLastBlock(long lastBlock) {
+		this.lastBlock = lastBlock;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getSafeGasPrice() {
+		return safeGasPrice;
+	}
+	public void setSafeGasPrice(String safeGasPrice) {
+		this.safeGasPrice = safeGasPrice;
+	}
+	public String getProposeGasPrice() {
+		return proposeGasPrice;
+	}
+	public void setProposeGasPrice(String proposeGasPrice) {
+		this.proposeGasPrice = proposeGasPrice;
+	}
+	public String getFastGasPrice() {
+		return fastGasPrice;
+	}
+	public void setFastGasPrice(String fastGasPrice) {
+		this.fastGasPrice = fastGasPrice;
+	}
+	public BigDecimal getSuggestBaseFee() {
+		return suggestBaseFee;
+	}
+	public void setSuggestBaseFee(BigDecimal suggestBaseFee) {
+		this.suggestBaseFee = suggestBaseFee;
+	}
+
+	
+	
+	
 }
