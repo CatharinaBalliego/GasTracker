@@ -1,6 +1,6 @@
-package gazether;
+package gasTracker;
 
-import gazether.Model.Global;
+import gasTracker.Model.Global;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;

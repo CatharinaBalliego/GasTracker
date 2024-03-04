@@ -1,4 +1,4 @@
-package gazether.Model;
+package gasTracker.Model;
 
 import lombok.Getter;
 import lombok.Setter;

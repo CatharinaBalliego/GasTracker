@@ -1,4 +1,4 @@
-package gazether;
+package gasTracker;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -6,8 +6,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import gazether.Model.GasPriceResponse;
-import gazether.Model.Global;
+import gasTracker.Model.GasPriceResponse;
+import gasTracker.Model.Global;
 
 public class Api {
 

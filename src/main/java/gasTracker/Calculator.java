@@ -1,4 +1,4 @@
-package gazether;
+package gasTracker;
 
 public class Calculator {
 
