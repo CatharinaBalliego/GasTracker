@@ -6,18 +6,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import com.google.gson.Gson;
-
-import gazether.Model.Gas;
+import gazether.Model.GasPriceResponse;
+import gazether.Model.Global;
 
 public class Api {
 
 	public String getGwei() {
-		try {	
-			Gas gas = new Gas();
-			Gson gson = new Gson();
+		try {
+			GasPriceResponse gas;
+
 			HttpRequest request = HttpRequest.newBuilder()
-					.uri(new URI("https://api.etherscan.io/api?module=gastracker&action=gasoracle&apiKey=B9ZVBJE4ZD94RBVM678Y2NBK9YQPUJJDWT"))
+					.uri(new URI(Global.EtherApi))
 					.build();
 			
 			HttpClient httpClient = HttpClient.newHttpClient();
@@ -31,9 +30,10 @@ public class Api {
 			}
 			
 			else {
-				gas = gson.fromJson(response.body(), Gas.class);
-				System.out.println(gas.getStatus());
-				return response.body();
+
+				gas = GasPriceResponse.fromJson(response.body());
+				System.out.println(gas.getResult().getProposeGasPrice());
+				return gas.getResult().getProposeGasPrice();
 			}
 			
 		} catch(Exception e) {

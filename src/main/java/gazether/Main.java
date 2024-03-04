@@ -24,7 +24,7 @@ public class Main extends ListenerAdapter {
 		
 		commands.addCommands(Commands.slash("ping", "Calcula o ping do bot"));
 		
-		commands.addCommands(Commands.slash("start","Inicia a aplicação"));
+		commands.addCommands(Commands.slash("start","Retorna a taxa de gas"));
 		
 		commands.queue();
 	}
@@ -36,7 +36,6 @@ public class Main extends ListenerAdapter {
 		case "ping":
 			long time = System.currentTimeMillis();
 			event.reply("Pong:  " + time).queue();
-			//also send current eth fee
 			break;
 			
 		case "start":
