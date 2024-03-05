@@ -9,15 +9,15 @@ import java.io.IOException;
 
 @Getter
 @Setter
-public class GasPriceResponse {
+public class GasPriceMapper {
 	public String status;
 	public String message;
 	public Result result;
 
 
-	public static GasPriceResponse fromJson(String json) throws IOException {
+	public static GasPriceMapper fromJson(String json) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		return mapper.readValue(json, GasPriceResponse.class);
+		return mapper.readValue(json, GasPriceMapper.class);
 	}
 
 	@Getter
@@ -26,11 +26,11 @@ public class GasPriceResponse {
 		@JsonProperty("LastBlock")
 		private String lastBlock;
 		@JsonProperty("SafeGasPrice")
-		private String safeGasPrice;
+		private int safeGasPrice;
 		@JsonProperty("ProposeGasPrice")
-		private String proposeGasPrice;
+		private int proposeGasPrice;
 		@JsonProperty("FastGasPrice")
-		private String fastGasPrice;
+		private int fastGasPrice;
 		@JsonProperty("suggestBaseFee")
 		private String suggestBaseFee;
 		@JsonProperty("gasUsedRatio")
