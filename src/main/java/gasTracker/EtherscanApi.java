@@ -6,14 +6,16 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
-import gasTracker.Model.GasPriceResponse;
+import gasTracker.Model.GasPriceMapper;
+import gasTracker.Model.GasResponse;
 import gasTracker.Model.Global;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
-public class Api {
+public class EtherscanApi {
 
-	public String getGwei() {
+	public GasResponse getCurrentGasPrice() {
 		try {
-			GasPriceResponse gas;
+			GasPriceMapper gas;
 
 			HttpRequest request = HttpRequest.newBuilder()
 					.uri(new URI(Global.EtherApi))
@@ -24,22 +26,30 @@ public class Api {
 			HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
 			
 			if(response.statusCode() != 200) {
-				//wait
-				//continue;
-				return "Erro ao conectar com a API!";
+				System.out.println("erro ao conectar com a api");
 			}
 			
 			else {
-
-				gas = GasPriceResponse.fromJson(response.body());
-				System.out.println(gas.getResult().getProposeGasPrice());
-				return gas.getResult().getProposeGasPrice();
+				var gasResponse = new GasResponse(GasPriceMapper.fromJson(response.body()));
+				return gasResponse;
 			}
 			
 		} catch(Exception e) {
 			System.out.println("erro: " + e.getLocalizedMessage());
 		}
-		return "error";
-		
+		return null;
 	}
+
+	public void getLowGasPrice(SlashCommandInteractionEvent event) throws Exception {
+		while (Global.scheduledNotifcation) {
+			GasResponse gasResponse = getCurrentGasPrice();
+			if (gasResponse.getProposeGasPrice() <= 25) {
+				Global.scheduledNotifcation = false;
+
+			}
+			else {
+				Thread.sleep(1000);
+			}
+		}
+    }
 }
